@@ -5,10 +5,10 @@ sendButton.addEventListener("click", (event) => {
       url: "http://localhost:8888/message",
       method: "POST",
       headers: {
-        "x-forwarded-for": "1.2.3.4",   // ip address i manualy set for testing purposes
+        "x-forwarded-for": "1.2.3.4",   // ip address is manualy set for testing purposes
       },
       data: {
-        to: "1.6.7.8",   // ip address i manualy set for testing purposes
+        to: "1.6.7.8",   // ip address is manualy set for testing purposes
         message: document.getElementById("message").value,
       },
     })
@@ -27,7 +27,7 @@ getButton.addEventListener("click", (event) => {
       url: "http://localhost:8888/message",
       method: "GET",
       headers: {
-        "x-forwarded-for": "1.6.7.8",  // ip address i manualy set for testing purposes
+        "x-forwarded-for": "1.6.7.8",  // ip address is manualy set for testing purposes
       },
     })
     .then(function (response) {
