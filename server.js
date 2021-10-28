@@ -18,11 +18,11 @@ app.use(
 app.post("/message", async function (req, res) {
   try {
     let incomingData = {
-      from: req.header("x-forwarded-for"),
+      from: req.header("x-the-client-ip"),
       to: req.body.to,
       message: req.body.message,
     };
-    console.log(incomingData);
+    console.log(`client ${incomingData.from} sent a message "${incomingData.message}" to ${incomingData.to}`);
     await fs.ensureFile(localStorage);
     let text = await fs.readFile(localStorage);
     let savedMessages = [];
@@ -41,7 +41,7 @@ app.post("/message", async function (req, res) {
 //GET
 app.get("/message", async function (req, res) {
   try {
-    let recipient = req.header("x-forwarded-for");
+    let recipient = req.header("x-the-client-ip");
     console.log(`ip address : ${recipient} requested their messages`); //!!!!!
     await fs.ensureFile(localStorage);
     let text = await fs.readFile(localStorage);
